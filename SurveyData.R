@@ -34,7 +34,8 @@ addAverage <- function(input.data) {
 colnames(survey.data) <- c("dorm", "cooking.frequency", "meal", "cultivate", "local.point", "district.market", "husky.den", "food.trucks","the.8",
                            "the.nook","by.george","facilities","utensils.own", "produce", "bulk.food", "utensils.buy", "meal.plan","dont.cook","cook")
 
-#Filtering by dorm
+#Filtering by dorm and which dining hall is used the most
+survey.data <- addAverage(survey.data)
 alder <- filter(survey.data, dorm == "Alder Hall") %>% 
   addAverage()
 elm <- filter(survey.data, dorm == "Elm Hall") %>% 
@@ -51,6 +52,9 @@ stevens <- filter(survey.data, dorm == "Stevens Court") %>%
   addAverage()
 terry <- filter(survey.data, dorm == "Terry Hall") %>% 
   addAverage()
+dm <- filter(survey.data, district.market == 1)
+lp <- filter(survey.data, local.point == 1)
+eight <- filter(survey.data, the.8 == 1)
 
 
 #Seperate by preferred dining option (Opt out entirely, below lowest currently offered, level currently offered)
@@ -61,3 +65,7 @@ low.plan <- filter(survey.data, meal.plan == "I would choose a dining plan level
 curr.plan <- filter(survey.data, meal.plan == "I would choose a dining plan level currently available.") %>% 
   addAverage()
 
+#Graphing decisions on meal plans
+#ggplot() +
+#  geom_bar(mapping = aes(x = c("Opt out of meal plan", "Choose lower meal plan than currently offered", "Choose meal plan currently offered"),
+#                         y = c(nrow(opt.out) - 1, nrow(low.plan) - 1, nrow(curr.plan) - 1)))
