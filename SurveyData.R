@@ -29,3 +29,12 @@ survey.data <- rbind(survey.data, c(NA,NA,NA,mean(survey.data[,4]),mean(survey.d
 #Fixing Column names
 colnames(survey.data) <- c("dorm", "cooking.frequency", "meal", "cultivate", "local.point", "district.market", "husky.den", "food.trucks","the.8",
                            "the.nook","by.george","facilities","utensils.own", "produce", "bulk.food", "utensils.buy", "meal.plan","dont.cook","cook")
+
+#Filtering by dorm
+alder <- filter(survey.data, dorm == "Alder Hall")
+elm <- filter(survey.data, dorm == "Elm Hall")
+haggett <- filter(survey.data, dorm == "Haggett Hall")
+maple <- filter(survey.data, dorm == "Maple Hall")
+mcmahon <- filter(survey.data, dorm == "McMahon Hall")
+mercer <- filter(survey.data, dorm == "Mercer Court")
+terry <- filter(survey.data, dorm == "Terry Hall")
