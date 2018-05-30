@@ -19,12 +19,13 @@ survey.data <- as.data.frame(lapply(survey.data, function(y) gsub("777", "", y))
 survey.data <- survey.data[,-c(4)]
 
 #Add average values of numeric numbers
-survey.data[,c(4:12, 14:16)] <- as.data.frame(lapply(survey.data[,c(4:12,14:16)], function(y) gsub("[^0-9]", "", y)))
-survey.data[,c(4:12, 14:16)] <- as.data.frame(lapply(survey.data[,c(4:12,14:16)], function(y) as.numeric(y)), stringsAsFactors = FALSE)
+survey.data[,c(4:12, 14:16)] <- as.data.frame(lapply(survey.data[,c(4:12,14:16)], function(y) gsub("[^0-9]", "", y)), stringsAsFactors = FALSE)
+survey.data[,c(4:12, 14:16)] <- as.data.frame(lapply(survey.data[,c(4:12,14:16)], function(y) as.character(y)), stringsAsFactors = FALSE)
+survey.data[,c(4:12, 14:16)] <- as.data.frame(lapply(survey.data[,c(4:12,14:16)], function(y) as.double(y)), stringsAsFactors = FALSE)
 survey.data <- rbind(survey.data, c(NA,NA,NA,mean(survey.data[,4]),mean(survey.data[,5]),mean(survey.data[,6]),mean(survey.data[,7]),
                      mean(survey.data[,8]),mean(survey.data[,9]),mean(survey.data[,10]),mean(survey.data[,11]),mean(survey.data[,12]),
                      NA,mean(survey.data[,14]),mean(survey.data[,15]),mean(survey.data[,16]),NA,NA,NA), stringsAsFactors = FALSE) 
 
 #Fixing Column names
-colnames(survey.data) <- c("dorm", "cooking.frequency", "meal", "cultivate", "local.point", "district.market", "husky.den", "food.trucks",
-                           "the.8","the.nook","by.george","utensils.own", "produce", "bulk.food", "utensils.buy", "meal.plan","dont.cook","cook")
+colnames(survey.data) <- c("dorm", "cooking.frequency", "meal", "cultivate", "local.point", "district.market", "husky.den", "food.trucks","the.8",
+                           "the.nook","by.george","facilities","utensils.own", "produce", "bulk.food", "utensils.buy", "meal.plan","dont.cook","cook")
